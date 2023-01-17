@@ -10,6 +10,7 @@ function ProductList() {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
         setProducts(data);
+        console.log("data :>> ", data);
       } catch (err) {
         setError(err);
       }

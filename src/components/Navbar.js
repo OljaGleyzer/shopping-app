@@ -9,7 +9,7 @@ function Navbar() {
       defaultActiveKey="/home"
     >
       <Nav.Link eventKey="disabled" disabled>
-        <p clasName="justify-content-start"> MarxitUp</p>
+        <p className="justify-content-start"> MarxitUp</p>
       </Nav.Link>
       <Nav.Item>
         <Nav.Link href="/home">Login</Nav.Link>
