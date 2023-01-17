@@ -4,6 +4,17 @@ body {
     
 }
 
+
+.cardlist-card{
+ 
+  object-fit: cover; 
+ 
+}
+
+.cardlist-card:hover {
+  transform: scale(1.10);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
