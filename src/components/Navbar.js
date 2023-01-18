@@ -12,10 +12,13 @@ function Navbar() {
         <p className="justify-content-start"> MarxitUp</p>
       </Nav.Link>
       <Nav.Item>
-        <Nav.Link href="/home">Login</Nav.Link>
+        <Nav.Link href="/">Home</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="link-1">Register</Nav.Link>
+        <Nav.Link href="/login">Login</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="/register">Register</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="/about">About</Nav.Link>

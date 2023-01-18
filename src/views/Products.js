@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
-import Navbar from "../components/Navbar";
+
 import Footer from "../components/Footer";
 
 function ProductList() {
@@ -48,7 +48,6 @@ function ProductList() {
 
   return (
     <div className="container">
-      <Navbar />
       <h1 className="text-center">Marx it up : Happy Shopping</h1>
       <h2 className="text-center">Enjoy your shopping </h2>
       <p></p>
