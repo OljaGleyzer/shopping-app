@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ProductCard from "./ProductCard";
+import ProductCard from "../components/ProductCard";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -20,20 +22,19 @@ function ProductList() {
   }, []);
 
   return (
-    <div className="container ">
-      <h1 className="">Marx it up : Happy Shopping</h1>
-      <div className="g-4 row row-cols-md-4 row-cols-1">
+    <div className="container">
+      <Navbar />
+      <h1>Marx it up : Happy Shopping</h1>
+      <p></p>
+      <div className="g-4 row row-cols-md-4 row-cols-1 ">
         {error && <p>{error.message}</p>}
         {products.map((product) => (
           <div key={product.id}>
-            {/* <img src={product.image} alt={product.title} />
-          <h2>{product.title}</h2>
-          <p>{product.price}</p>
-          <button>Show more</button> */}
             <ProductCard product={product} />
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }
