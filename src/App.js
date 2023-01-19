@@ -12,8 +12,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Products />} />
-        <Route path="/:id" element={<Pdp />} />
-        <Route path="about" element={<About />} />
+        <Route path="/product/:id" element={<Pdp />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </div>

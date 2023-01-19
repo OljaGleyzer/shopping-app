@@ -7,16 +7,21 @@ function ProductCard({ product }) {
   const { title, image, category, price } = product;
   console.log("product", product);
   return (
-    <Card style={{ hight: "400px" }} className="col">
+    <Card style={{ height: "30em", overflow: "auto" }} className="col">
       <div className="cardlist-card">
-        <Card.Img variant="top" src={image} className="card-img-top" />
+        <Card.Img
+          style={{ height: "15em", width: "auto" }}
+          variant="top"
+          src={image}
+          className="card-img-top"
+        />
         <Card.Body className="text-overflow">
           <Card.Title>{title}</Card.Title>
           <Card.Text className="card-text">
             {price} {"€"}
           </Card.Text>
           <Card.Text className="card-text">{category}</Card.Text>
-          <Link to={`/${product.id}`}>
+          <Link to={`/product/${product.id}`}>
             <Button variant="primary" className="btn btn-primary">
               Show More{" "}
             </Button>

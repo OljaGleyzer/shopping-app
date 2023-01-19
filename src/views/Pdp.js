@@ -2,31 +2,36 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Button } from "react-bootstrap";
 
 function Pdp() {
   const [product, setProduct] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  console.log("id :>> ", id);
+  console.log("useParams()", useParams());
 
   const fetchDetails = async () => {
-    try {
-      setIsLoading(true);
-      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-      const data = await response.json();
-      console.log("data :>> ", data);
-      if (data && data.length) {
-        console.log("Productdata :>> ", data);
-        setProduct(data);
-        setIsLoading(false);
-      } else {
-        setError("No Product found");
+    if (!isNaN(Number(id)) && id < 21 && id > 0) {
+      try {
+        setIsLoading(true);
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+        const data = await response.json();
+        console.log("data :>> ", data);
+        if (data) {
+          console.log("Productdata :>> ", data);
+          setProduct(data);
+          setIsLoading(false);
+        } else {
+          setError("No Product found");
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.log("error", error);
         setIsLoading(false);
       }
-    } catch (error) {
-      console.log("error", error);
-      setError(error);
+    } else {
+      setError("This ID is invalid");
       setIsLoading(false);
     }
   };
@@ -56,9 +61,18 @@ function Pdp() {
         <p>Loading...</p>
       ) : product ? (
         <>
-          <h1> Product: {product.title}</h1>
-          <p>Text: {product.description}</p>
-          <p>Price: {product.price}</p>
+          <div className="container">
+            <h1 className="text-center"> {product.title}</h1>
+            <img
+              className="container d-flex justify-content-center"
+              src={product.image}
+              style={{ height: "30em", width: "auto" }}
+            ></img>
+            <p></p>
+            <p>Description: {product.description}</p>
+            <h5>Price: {product.price} €</h5>
+            <Button variant="primary">Buy Me</Button>
+          </div>
         </>
       ) : (
         <p>No product found</p>
