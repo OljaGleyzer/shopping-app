@@ -6,16 +6,28 @@ import { useEffect } from "react";
 function Pdp() {
   const [product, setProduct] = useState({});
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+  console.log("id :>> ", id);
 
   const fetchDetails = async () => {
     try {
+      setIsLoading(true);
       const response = await fetch(`https://fakestoreapi.com/products/${id}`);
       const data = await response.json();
       console.log("data :>> ", data);
-      setProduct(data[0]);
+      if (data && data.length) {
+        console.log("Productdata :>> ", data);
+        setProduct(data);
+        setIsLoading(false);
+      } else {
+        setError("No Product found");
+        setIsLoading(false);
+      }
     } catch (error) {
       console.log("error", error);
+      setError(error);
+      setIsLoading(false);
     }
   };
 
@@ -40,16 +52,18 @@ function Pdp() {
 
   return (
     <div>
-      {product ? (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : product ? (
         <>
           <h1> Product: {product.title}</h1>
           <p>Text: {product.description}</p>
           <p>Price: {product.price}</p>
         </>
       ) : (
-        <p>Loading...</p>
+        <p>No product found</p>
       )}
-      {error && <p>Error: {error}</p>}
+      {error && <p>CatchError: {error}</p>}
     </div>
   );
 }
