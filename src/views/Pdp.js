@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Button } from "react-bootstrap";
+import Container from "react-bootstrap";
 
 function Pdp() {
   const [product, setProduct] = useState({});
@@ -71,7 +72,9 @@ function Pdp() {
             <p></p>
             <p>Description: {product.description}</p>
             <h5>Price: {product.price} €</h5>
-            <Button variant="primary">Buy Me</Button>
+            <div className=" align-items-baseline">
+              <Button variant="primary">Buy Me</Button>
+            </div>
           </div>
         </>
       ) : (

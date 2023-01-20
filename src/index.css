@@ -5,11 +5,13 @@ body {
 }
 
 
-.cardlist-card{
+.cardlist-card{ 
  
-  object-fit: cover; 
+ object-fit: cover; 
+
+
  
-}
+} 
 
 .cardlist-card:hover {
   transform: scale(1.05);

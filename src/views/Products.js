@@ -72,6 +72,8 @@ function ProductList() {
           ))}
         </>
       </div>
+      <p></p>
+      <p></p>
       <Footer />
     </div>
   );
