@@ -22,9 +22,11 @@ function ProductCard({ product }) {
           </Card.Text>
           <Card.Text className="card-text">{category}</Card.Text>
           <Link to={`/product/${product.id}`}>
-            <Button variant="primary" className="btn btn-primary">
-              Show More{" "}
-            </Button>
+            <div>
+              <Button variant="primary" className="btn btn-primary">
+                Show More{" "}
+              </Button>
+            </div>
           </Link>
         </Card.Body>
       </div>
