@@ -8,9 +8,6 @@ function Navbar() {
       variant="pills"
       defaultActiveKey="/home"
     >
-      <Nav.Link eventKey="disabled" disabled>
-        <p className="justify-content-start"> MarxitUp</p>
-      </Nav.Link>
       <Nav.Item>
         <Nav.Link href="/">Home</Nav.Link>
       </Nav.Item>
