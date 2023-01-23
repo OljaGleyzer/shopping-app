@@ -28,6 +28,17 @@ input{
         background-color: black;
         color: white;
 }
+.register-button{
+    padding: 10px;
+        width: 300px;
+        border: 1px solid #cecece;
+        background-color: black;
+        color: white;
+}
+
+small{
+    color:red;
+}
 
 
 

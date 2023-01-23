@@ -22,7 +22,9 @@ const Login = () => {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
+        <small> this is an error placeholder</small>
         <button className="login-button">Login</button>
+        <button className="register-button">Register</button>
       </div>
     </div>
   );
