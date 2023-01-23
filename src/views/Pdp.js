@@ -4,42 +4,45 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import Container from "react-bootstrap";
+import useFetch from "../hooks/useFetch";
 
 function Pdp() {
-  const [product, setProduct] = useState({});
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [product, setProduct] = useState({});
+  // const [error, setError] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   console.log("useParams()", useParams());
 
-  const fetchDetails = async () => {
-    if (!isNaN(Number(id)) && id < 21 && id > 0) {
-      try {
-        setIsLoading(true);
-        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-        const data = await response.json();
-        console.log("data :>> ", data);
-        if (data) {
-          console.log("Productdata :>> ", data);
-          setProduct(data);
-          setIsLoading(false);
-        } else {
-          setError("No Product found");
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.log("error", error);
-        setIsLoading(false);
-      }
-    } else {
-      setError("This ID is invalid");
-      setIsLoading(false);
-    }
-  };
+  const { product, error, isLoading, setProducts } = useFetch(id);
 
-  useEffect(() => {
-    fetchDetails();
-  }, [id]);
+  // const fetchDetails = async () => {
+  //   if (!isNaN(Number(id)) && id < 21 && id > 0) {
+  //     try {
+  //       setIsLoading(true);
+  //       const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+  //       const data = await response.json();
+  //       console.log("data :>> ", data);
+  //       if (data) {
+  //         console.log("Productdata :>> ", data);
+  //         setProduct(data);
+  //         setIsLoading(false);
+  //       } else {
+  //         setError("No Product found");
+  //         setIsLoading(false);
+  //       }
+  //     } catch (error) {
+  //       console.log("error", error);
+  //       setIsLoading(false);
+  //     }
+  //   } else {
+  //     setError("This ID is invalid");
+  //     setIsLoading(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchDetails();
+  // }, [id]);
 
   //   useEffect(() => {
   //     async function fetchProduct() {

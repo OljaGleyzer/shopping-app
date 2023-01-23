@@ -1,29 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ProductCard from "../components/ProductCard";
-
 import Footer from "../components/Footer";
+import { ProductsContext } from "../store/ProductsContext";
 
 function ProductList() {
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const { products, error, isLoading } = useContext(ProductsContext);
+  // console.log("products :>> ", products);
+
+  // const [products, setProducts] = useState([]);
+  // const [error, setError] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
   const [options, setOptions] = useState([]);
+  // const url = "https://fakestoreapi.com/products";
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
-        setProducts(data);
+  // useEffect(() => {
+  // async function fetchData() {
+  //   try {
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  //     setProducts(data);
 
-        console.log("data :>> ", data);
-      } catch (err) {
-        setError(err);
-      }
-    }
-    fetchData();
-  }, []);
+  //     console.log("data :>> ", data);
+  //   } catch (err) {
+  //     setError(err);
+  //   }
+  // }
+  //   fetchData();
+  // }, []);
 
   //generate options from categories of the products for the dropdown
   useEffect(() => {
@@ -33,7 +37,7 @@ function ProductList() {
     setOptions(uniqueOptions);
   }, [products]);
 
-  // eventHandler for choosing option in Dropdown
+  // // eventHandler for choosing option in Dropdown
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
@@ -50,7 +54,8 @@ function ProductList() {
     <div className="container">
       <h1 className="text-center">MarxItUp : Happy Shopping</h1>
       <h2 className="text-center">Enjoy your shopping </h2>
-      <p></p>
+
+      <br />
       {/* Dropdown Filter */}
       <select value={selectedValue} onChange={handleChange}>
         <option value="">All</option>
@@ -74,7 +79,7 @@ function ProductList() {
       </div>
       <p></p>
       <p></p>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
