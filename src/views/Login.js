@@ -11,6 +11,7 @@ const Login = () => {
     password,
     setPassword,
     userName,
+    user,
     setUserName,
     error,
     handleLogin,
@@ -41,30 +42,29 @@ const Login = () => {
 
   return (
     <div className="login">
-      <h1>Please Login:</h1>
-      <div className="login-inputs">
-        <input
-          value={userName}
-          type="text"
-          placeholder="Username"
-          onChange={(e) => setUserName(e.target.value)}
-        />
-        <input
-          value={password}
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {error && <small>{error}</small>}
-        <button
-          className="login-button"
-          onClick={() => handleLogin(userName, password)}
-        >
-          Login
-        </button>
-        <button className="register-button">Register</button>
-      </div>
+      {user.userName ? <h1>Hello {user.userName}</h1> : <h1>Please Login:</h1>}
+      <input
+        value={userName}
+        type="text"
+        placeholder="Username"
+        onChange={(e) => setUserName(e.target.value)}
+      />
+      <input
+        value={password}
+        type="password"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      {error && <small>{error}</small>}
+      <button
+        className="login-button"
+        onClick={() => handleLogin(userName, password)}
+      >
+        Login
+      </button>
+      <button className="register-button">Register</button>
     </div>
+    // </div>
   );
 };
 

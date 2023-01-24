@@ -1,9 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
 import { Button } from "react-bootstrap";
-import Container from "react-bootstrap";
 import useFetch from "../hooks/useFetch";
 
 function Pdp() {
