@@ -1,4 +1,23 @@
+body {
+    margin: 0;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
 
+}
+
+
+.cardlist-card {
+
+    object-fit: cover;
+}
+
+.cardlist-card:hover {
+    transform: scale(1.05);
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
 .login{
     height: 100%;
     min-height: 80vh;

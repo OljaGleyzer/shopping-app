@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: Roboto, Helvetica, Arial, sans-serif;
     
@@ -8,9 +8,6 @@ body {
 .cardlist-card{ 
  
  object-fit: cover; 
-
-
- 
 } 
 
 .cardlist-card:hover {
@@ -20,4 +17,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */

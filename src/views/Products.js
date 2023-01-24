@@ -65,7 +65,7 @@ function ProductList() {
           </option>
         ))}
       </select>
-      <p></p>
+      <br />
       <div className="g-4 row row-cols-md-4 row-cols-1 ">
         {error && <p>{error.message}</p>}
 
