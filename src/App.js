@@ -8,22 +8,26 @@ import Footer from "./components/Footer";
 import Login from "./views/Login";
 import { Route, Routes } from "react-router-dom";
 import { ProductsContextProvider } from "./store/ProductsContext";
+import { AuthContext, AuthContextProvider } from "./store/AuthContext";
+import { useEffect } from "react";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <ProductsContextProvider>
-        <Routes>
-          <Route path="/" element={<ProductList />} />
-          <Route path="/testing" element={<ProductList />} />
-          <Route path="/product/:id" element={<Pdp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/about" element={<About />} />
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-      </ProductsContextProvider>
-      <Footer />
+      <AuthContextProvider>
+        <Navbar />
+        <ProductsContextProvider>
+          <Routes>
+            <Route path="/" element={<ProductList />} />
+            <Route path="/testing" element={<ProductList />} />
+            <Route path="/product/:id" element={<Pdp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NoMatch />} />
+          </Routes>
+        </ProductsContextProvider>
+        <Footer />
+      </AuthContextProvider>
     </div>
   );
 }

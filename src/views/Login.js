@@ -1,36 +1,43 @@
-import React from "react";
-import { useState } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../store/AuthContext";
 
 const Login = () => {
   // const [userName, setUserName] = useState("");
   // const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const { token, setToken, password, setPassword, userName, setUserName } =
-    useContext(AuthContext);
 
-  const handleLogin = async (userName, password) => {
-    try {
-      await fetch("https://fakestoreapi.com/auth/login", {
-        method: "POST",
-        // headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: userName,
-          password: password,
-        }),
-      });
-      const data = await res.json();
-      console.log("data.token:>>", data.token);
-      if (data.token) {
-        setToken(data.token);
-        //redirect to home page or some other page
-      } else {
-        setError(err.response.data);
-      }
-    } catch (err) {
-      console.log("err.response.data", err.response.data);
-    }
-  };
+  const {
+    token,
+    setToken,
+    password,
+    setPassword,
+    userName,
+    setUserName,
+    error,
+    handleLogin,
+  } = useContext(AuthContext);
+
+  // const handleLogin = async (userName, password) => {
+  //   try {
+  //     await fetch("https://fakestoreapi.com/auth/login", {
+  //       method: "POST",
+  //       // headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         username: userName,
+  //         password: password,
+  //       }),
+  //     });
+  //     const data = await res.json();
+  //     console.log("data.token:>>", data.token);
+  //     if (data.token) {
+  //       setToken(data.token);
+  //       //redirect to home page or some other page
+  //     } else {
+  //       setError(err.response.data);
+  //     }
+  //   } catch (err) {
+  //     console.log("err.response.data", err.response.data);
+  //   }
+  // };
 
   return (
     <div className="login">

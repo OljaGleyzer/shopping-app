@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
   const { title, image, category, price } = product;
-  console.log("product", product);
+  // console.log("product", product);
   return (
     <>
       <Card style={{ height: "30em", overflow: "auto" }} className="col">

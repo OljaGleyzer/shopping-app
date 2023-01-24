@@ -1,5 +1,6 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -9,7 +10,9 @@ function Navbar() {
       defaultActiveKey="/home"
     >
       <Nav.Item>
-        <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link as={Link} to="/">
+          Home
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="/login">Login</Nav.Link>
