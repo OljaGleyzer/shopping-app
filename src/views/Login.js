@@ -64,7 +64,6 @@ const Login = () => {
       </button>
       <button className="register-button">Register</button>
     </div>
-    // </div>
   );
 };
 

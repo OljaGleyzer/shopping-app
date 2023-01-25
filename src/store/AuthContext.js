@@ -22,8 +22,6 @@ export const AuthContextProvider = (props) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          //   username: "mor_2314",
-          //   password: "83r5^_",
           username: userName,
           password: password,
         }),
