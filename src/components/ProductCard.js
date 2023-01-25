@@ -23,7 +23,7 @@ function ProductCard({ product }) {
             </Card.Text>
             <Card.Text className="card-text">{category}</Card.Text>
             <Link to={`/product/${product.id}`}>
-              <div clasName="container d-flex align-items-baseline">
+              <div className="container d-flex align-items-baseline">
                 <Button variant="primary" className="btn btn-primary">
                   Show More{" "}
                 </Button>

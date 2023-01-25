@@ -11,6 +11,8 @@ export const AuthContextProvider = (props) => {
   const redirectTo = useNavigate();
   const [user, setUser] = useState({
     userName: "",
+    token: null,
+    password: null,
   });
 
   const handleLogin = async (userName, password) => {
@@ -43,6 +45,14 @@ export const AuthContextProvider = (props) => {
     }
   };
 
+  const logout = () => {
+    setUser({
+      userName: null,
+      token: null,
+      password: null,
+    });
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -55,6 +65,7 @@ export const AuthContextProvider = (props) => {
         handleLogin,
         error,
         user,
+        logout,
       }}
     >
       {props.children}
