@@ -11,6 +11,7 @@ import { ProductsContextProvider } from "./store/ProductsContext";
 import { AuthContext, AuthContextProvider } from "./store/AuthContext";
 import { useEffect } from "react";
 import MyProfile from "./views/MyProfile";
+import ProtectedRoute from "./roots/ProtectedRoute";
 
 function App() {
   return (
@@ -23,7 +24,14 @@ function App() {
             <Route path="/testing" element={<ProductList />} />
             <Route path="/product/:id" element={<Pdp />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/myprofile" element={<MyProfile />} />
+            <Route
+              path="/myprofile"
+              element={
+                <ProtectedRoute>
+                  <MyProfile />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>

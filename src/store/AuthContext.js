@@ -10,7 +10,7 @@ export const AuthContextProvider = (props) => {
   const [error, setError] = useState("");
   const redirectTo = useNavigate();
   const [user, setUser] = useState({
-    userName: "",
+    userName: null,
     token: null,
     password: null,
   });

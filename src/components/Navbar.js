@@ -25,11 +25,10 @@ function Navbar() {
         )}
       </Nav.Item>
       <Nav.Item>
-        {userName && (
-          <Nav.Link as={Link} to="/myprofile">
-            My Profile
-          </Nav.Link>
-        )}
+        {/* {userName && ( */}
+        <Nav.Link as={Link} to="/myprofile">
+          My Profile
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item>
         {userName && (
