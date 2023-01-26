@@ -12,42 +12,26 @@ const Login = () => {
     setPassword,
     userName,
     user,
-    setUserName,
     error,
     handleLogin,
+    email,
+    setEmail,
   } = useContext(AuthContext);
-
-  // const handleLogin = async (userName, password) => {
-  //   try {
-  //     await fetch("https://fakestoreapi.com/auth/login", {
-  //       method: "POST",
-  //       // headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({
-  //         username: userName,
-  //         password: password,
-  //       }),
-  //     });
-  //     const data = await res.json();
-  //     console.log("data.token:>>", data.token);
-  //     if (data.token) {
-  //       setToken(data.token);
-  //       //redirect to home page or some other page
-  //     } else {
-  //       setError(err.response.data);
-  //     }
-  //   } catch (err) {
-  //     console.log("err.response.data", err.response.data);
-  //   }
-  // };
 
   return (
     <div className="login">
       {user.userName ? <h1>Hello {user.userName}</h1> : <h1>Please Login:</h1>}
-      <input
+      {/* <input
         value={userName}
         type="text"
         placeholder="Username"
         onChange={(e) => setUserName(e.target.value)}
+      /> */}
+      <input
+        value={email}
+        type="email"
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
       />
       <input
         value={password}

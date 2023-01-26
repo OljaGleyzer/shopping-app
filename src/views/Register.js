@@ -16,12 +16,14 @@ const Register = () => {
   return (
     <div className="login">
       <h1>Please Register:</h1>
-      <input
+
+      {/*
+       <input
         value={userName}
         type="text"
         placeholder="Username"
         onChange={(e) => setUserName(e.target.value)}
-      />
+      /> */}
       <input
         value={email}
         type="email"
