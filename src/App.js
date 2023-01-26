@@ -13,8 +13,10 @@ import { AuthContext, AuthContextProvider } from "./store/AuthContext";
 import { useEffect } from "react";
 import MyProfile from "./views/MyProfile";
 import ProtectedRoute from "./roots/ProtectedRoute";
+import { app } from "./config/firebaseconfig";
 
 function App() {
+  console.log("app :>> ", app);
   return (
     <div className="App">
       <AuthContextProvider>
