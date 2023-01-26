@@ -6,6 +6,7 @@ import NoMatch from "./views/NoMatch";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./views/Login";
+import Register from "./views/Register";
 import { Route, Routes } from "react-router-dom";
 import { ProductsContextProvider } from "./store/ProductsContext";
 import { AuthContext, AuthContextProvider } from "./store/AuthContext";
@@ -32,6 +33,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/register" element={<Register />} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
