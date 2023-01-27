@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 import { redirect, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebaseconfig";
 
 export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {
@@ -14,6 +16,23 @@ export const AuthContextProvider = (props) => {
     token: null,
     password: null,
   });
+
+  const register = async (email, password) => {
+    console.log("email,password", email, password);
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const registeredUser = userCredential.user;
+    } catch (error) {
+      console.log("error.message :>> ", error.message);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    }
+  };
 
   const handleLogin = async (userName, password) => {
     console.log("userName, password", userName, password);
@@ -64,6 +83,7 @@ export const AuthContextProvider = (props) => {
         error,
         user,
         logout,
+        register,
       }}
     >
       {props.children}

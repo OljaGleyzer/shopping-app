@@ -1,17 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../store/AuthContext";
 
 const Register = () => {
-  const {
-    password,
-    setPassword,
-    userName,
-    user,
-    setUserName,
-    error,
-    email,
-    setEmail,
-  } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleRegister = () => {
+    register(email, password);
+  };
+  const { register, error } = useContext(AuthContext);
 
   return (
     <div className="login">
@@ -25,21 +24,21 @@ const Register = () => {
         onChange={(e) => setUserName(e.target.value)}
       /> */}
       <input
-        value={email}
+        // value={email}
         type="email"
         placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={handleEmailChange}
       />
       <input
-        value={password}
+        // value={password}
         type="password"
         placeholder="Password"
-        // onChange={(e) => setPassword(e.target.value)}
+        onChange={handlePasswordChange}
       />
       {error && <small>{error}</small>}
       <button
         className="register-button"
-        // onClick={() => handleLogin(userName, password, email)}
+        onClick={() => handleRegister(email, password)}
       >
         Register
       </button>
