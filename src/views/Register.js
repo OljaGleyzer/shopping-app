@@ -10,11 +10,12 @@ const Register = () => {
   const handleRegister = () => {
     register(email, password);
   };
-  const { register, error } = useContext(AuthContext);
+  // const handleLoginButton = Link to
+  const { register, error, user } = useContext(AuthContext);
 
   return (
     <div className="login">
-      <h1>Please Register:</h1>
+      {user.email ? <h1>Hello {user.email}</h1> : <h1>Please register: </h1>}
 
       {/*
        <input
@@ -42,7 +43,7 @@ const Register = () => {
       >
         Register
       </button>
-      <button className="login-button">Login</button>
+      <button className="login-button">Got an Acount? Login!</button>
     </div>
   );
 };

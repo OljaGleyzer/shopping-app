@@ -10,7 +10,7 @@ function ProtectedRoute({ children }) {
   console.log("children", children);
 
   const { user } = useContext(AuthContext);
-  const isUser = user.userName ? true : false;
+  const isUser = user.email ? true : false;
 
   useEffect(() => {
     if (!isUser) {

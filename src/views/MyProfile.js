@@ -18,7 +18,7 @@ function MyProfile() {
       <h1> Welcome {user.userName}</h1>
 
       <h2> Personal Information</h2>
-      {/* <p>Email: {user.email}</p> */}
+      <p>Email: {user.email}</p>
       <p>Username: {user.userName}</p>
       <h2>Account Settings</h2>
 

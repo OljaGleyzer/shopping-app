@@ -5,7 +5,7 @@ import { AuthContext } from "../store/AuthContext";
 import { useContext } from "react";
 
 function Navbar() {
-  const { token, password, userName, logout } = useContext(AuthContext);
+  const { password, logout, user } = useContext(AuthContext);
   return (
     <Nav
       className="justify-content-end bg-dark"
@@ -18,33 +18,36 @@ function Navbar() {
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        {!userName && (
+        {!user.email && (
           <Nav.Link as={Link} to="/login">
             Login
           </Nav.Link>
         )}
       </Nav.Item>
       <Nav.Item>
-        {/* {userName && ( */}
-        <Nav.Link as={Link} to="/myprofile">
-          My Profile
-        </Nav.Link>
+        {user.email && (
+          <Nav.Link as={Link} to="/myprofile">
+            My Profile
+          </Nav.Link>
+        )}
       </Nav.Item>
       <Nav.Item>
-        {userName && (
+        {user.email && (
           <Nav.Link
             as={Link}
             to="/login"
-            onClick={() => logout(userName, password, token, logout)}
+            onClick={() => logout(password, logout)}
           >
             Logout
           </Nav.Link>
         )}
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={Link} to="/register">
-          Register
-        </Nav.Link>
+        {!user.email && (
+          <Nav.Link as={Link} to="/register">
+            Register
+          </Nav.Link>
+        )}
       </Nav.Item>
       <Nav.Item>
         <Nav.Link as={Link} to="/about">
