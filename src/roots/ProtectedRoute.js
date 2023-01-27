@@ -1,16 +1,26 @@
 import React from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/AuthContext";
 
 function ProtectedRoute({ children }) {
   const redirectTo = useNavigate();
+
   console.log("children", children);
 
   const { user } = useContext(AuthContext);
   const isUser = user.userName ? true : false;
 
-  return <>{isUser ? children : redirectTo("/")}</>;
+  useEffect(() => {
+    if (!isUser) {
+      console.log("navigate :>> ");
+      // <Navigate to="/" />;
+      redirectTo("/");
+    }
+  }, []);
+
+  return <>{isUser ? children : null}</>;
 }
 
 export default ProtectedRoute;
