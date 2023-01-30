@@ -11,17 +11,20 @@ function MyProfile() {
   const redirectTo = useNavigate();
   const [userName, setUserName] = useState("");
 
-  const handleNameChange = (e) => setUserName(e.target.value);
-  // console.log("setUserName", setUserName);
+  const handleNameChange = (e) => {
+    setUserName(e.target.value);
+    console.log("setUserName", e.target.value);
+  };
 
-  const handleUserName = () => {
+  const handleUserName = (e) => {
+    e.preventDefault();
     const auth = getAuth();
     updateProfile(auth.currentUser, {
       displayName: userName,
     })
       .then(() => {
-        // clo
         console.log("Profile updated");
+        // getUpdatedUserInfo()
         // ...
       })
       .catch((error) => {
