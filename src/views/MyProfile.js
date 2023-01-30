@@ -39,7 +39,7 @@ function MyProfile() {
   return (
     <div className="container text-center">
       <img src={avatar} alt="avatarProfile" />
-      <h1> Welcome {userName}</h1>
+      <h1> Welcome {user.displayName}</h1>
 
       <h2> Personal Information</h2>
       <p>Email: {user.email}</p>

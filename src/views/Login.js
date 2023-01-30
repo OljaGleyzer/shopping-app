@@ -15,7 +15,7 @@ const Login = () => {
 
   return (
     <div className="login">
-      {user.email ? <h1>Hello {user.email}</h1> : <h1>Please Login:</h1>}
+      {user.email ? <h1>Hello {user.displayName}</h1> : <h1>Please Login:</h1>}
       {/* <input
         value={userName}
         type="text"

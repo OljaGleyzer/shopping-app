@@ -2,10 +2,13 @@ import { createContext, useState } from "react";
 import { redirect, useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
+  getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../config/firebaseconfig";
+import { useEffect } from "react";
 
 export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {
@@ -57,12 +60,41 @@ export const AuthContextProvider = (props) => {
     }
   };
 
-  const logout = () => {
-    setUser({
-      userName: null,
-      password: null,
+  const checkUserStatus = () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+
+        const uid = user.uid;
+        console.log("user is logged in");
+        setUser(user);
+      } else {
+        console.log("user is not logged in");
+        // setUser(null);
+      }
     });
   };
+
+  const logout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        console.log("sign out successfull");
+        setUser({
+          userName: null,
+          password: null,
+        });
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        console.log("sign out not successfull");
+      });
+  };
+
+  useEffect(() => {
+    checkUserStatus();
+  }, []);
 
   return (
     <AuthContext.Provider

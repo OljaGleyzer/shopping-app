@@ -65,7 +65,9 @@ function ProductList() {
 
   return (
     <div className="container">
-      <h1 className="text-center">MarxItUp : Happy Shopping {user.email}</h1>
+      <h1 className="text-center">
+        MarxItUp : Happy Shopping {user.displayName}
+      </h1>
       <h2 className="text-center">Enjoy your shopping </h2>
 
       <br />
