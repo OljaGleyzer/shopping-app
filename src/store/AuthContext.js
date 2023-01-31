@@ -13,8 +13,8 @@ import { useEffect } from "react";
 export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {
   //Put here the state and functions you want to share
-  // const [token, setToken] = useState("");
-  // const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [loader, setLoader] = useState(true);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const redirectTo = useNavigate();
@@ -69,8 +69,11 @@ export const AuthContextProvider = (props) => {
         const uid = user.uid;
         console.log("user is logged in");
         setUser(user);
+        setLoader(false);
+        setUserName(user.displayName);
       } else {
         console.log("user is not logged in");
+        setLoader(false);
         // setUser(null);
       }
     });
@@ -106,6 +109,10 @@ export const AuthContextProvider = (props) => {
         register,
         login,
         user,
+        loader,
+        checkUserStatus,
+        userName,
+        setUserName,
       }}
     >
       {props.children}

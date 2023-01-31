@@ -7,9 +7,9 @@ import { useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
 
 function MyProfile() {
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout, checkUserStatus, userName, setUserName } =
+    useContext(AuthContext);
   const redirectTo = useNavigate();
-  const [userName, setUserName] = useState("");
 
   const handleNameChange = (e) => {
     setUserName(e.target.value);
@@ -23,9 +23,9 @@ function MyProfile() {
       displayName: userName,
     })
       .then(() => {
+        checkUserStatus();
         console.log("Profile updated");
         // getUpdatedUserInfo()
-        // ...
       })
       .catch((error) => {
         console.log("error :>> ", error);
@@ -54,7 +54,7 @@ function MyProfile() {
             type="text"
             id="username"
             name="username"
-            onChange={handleNameChange}
+            onChange={setUserName && { handleNameChange }}
           />
           <button className="username-button" onClick={handleUserName}>
             Submit

@@ -9,7 +9,7 @@ function ProtectedRoute({ children }) {
 
   console.log("children", children);
 
-  const { user } = useContext(AuthContext);
+  const { user, loader } = useContext(AuthContext);
   const isUser = user.email ? true : false;
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function ProtectedRoute({ children }) {
     }
   }, []);
 
-  return <>{isUser ? children : null}</>;
+  return <>{loader ? <p> Loading ...</p> : isUser ? children : null}</>;
 }
 
 export default ProtectedRoute;
