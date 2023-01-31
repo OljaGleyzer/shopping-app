@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/AuthContext";
 
 const Login = () => {
@@ -44,13 +44,16 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       {error && <small>{error}</small>}
+
       <button
         className="login-button"
         onClick={() => handleLogin(email, password)}
       >
         Login
       </button>
-      <button className="register-button"> No Account? Register!</button>
+      <Link to="/register">
+        <button className="register-button"> No Account? Register!</button>
+      </Link>
     </div>
   );
 };

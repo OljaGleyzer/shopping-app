@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../store/AuthContext";
 
 const Register = () => {
@@ -43,7 +44,9 @@ const Register = () => {
       >
         Register
       </button>
-      <button className="login-button">Got an Acount? Login!</button>
+      <Link to="/login">
+        <button className="login-button">Got an Acount? Login!</button>
+      </Link>
     </div>
   );
 };
