@@ -5,11 +5,16 @@ import { AuthContext } from "../store/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
+import { useEffect } from "react";
 
 function MyProfile() {
   const { user, logout, checkUserStatus, userName, setUserName } =
     useContext(AuthContext);
   const redirectTo = useNavigate();
+
+  useEffect(() => {
+    console.log("user :>> ", user);
+  }, [user]);
 
   const handleNameChange = (e) => {
     setUserName(e.target.value);
@@ -18,23 +23,18 @@ function MyProfile() {
 
   const handleUserName = (e) => {
     e.preventDefault();
-    const auth = getAuth();
-    updateProfile(auth.currentUser, {
+    // const auth = getAuth();
+    updateProfile(user, {
       displayName: userName,
     })
       .then(() => {
-        checkUserStatus();
         console.log("Profile updated");
-        // getUpdatedUserInfo()
+        checkUserStatus();
       })
       .catch((error) => {
         console.log("error :>> ", error);
       });
   };
-
-  // if (!userName) {
-  //   redirectTo("/login");
-  // }
 
   return (
     <div className="container text-center">
@@ -54,7 +54,7 @@ function MyProfile() {
             type="text"
             id="username"
             name="username"
-            onChange={setUserName && { handleNameChange }}
+            onChange={handleNameChange}
           />
           <button className="username-button" onClick={handleUserName}>
             Submit

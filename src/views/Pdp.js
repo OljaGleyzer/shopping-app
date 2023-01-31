@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import useFetch from "../hooks/useFetch";
+import Comments from "../components/Comments";
 
 function Pdp() {
   // const [product, setProduct] = useState({});
@@ -76,6 +77,7 @@ function Pdp() {
               <Button variant="primary">Buy Me</Button>
             </div>
           </div>
+          <Comments />
         </>
       ) : (
         <p>No product found</p>

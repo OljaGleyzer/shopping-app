@@ -16,7 +16,7 @@ import ProtectedRoute from "./roots/ProtectedRoute";
 import { app } from "./config/firebaseconfig";
 
 function App() {
-  console.log("app :>> ", app);
+  console.log("app ", app);
   return (
     <div className="App">
       <AuthContextProvider>

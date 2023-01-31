@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/AuthContext";
 
 const Login = () => {
@@ -12,6 +14,12 @@ const Login = () => {
   };
 
   const { login, error, user } = useContext(AuthContext);
+
+  useEffect(() => {
+    user && redirectLogin("/myprofile");
+  }, [user]);
+
+  const redirectLogin = useNavigate();
 
   return (
     <div className="login">
