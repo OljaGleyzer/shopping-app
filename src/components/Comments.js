@@ -11,7 +11,7 @@ import {
 import React, { useState } from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { db } from "../config/firebaseconfig";
 import { AuthContext } from "../store/AuthContext";
 
@@ -32,12 +32,6 @@ function Comments({ id }) {
 
   const getComments = async () => {
     try {
-      //   const comments = query(
-      //     collectionGroup(db, "products"),
-      //     where("productID", "==", id)
-      //   );
-      //   const productRef = collection(db, "products");
-      //   console.log("testing", productRef);
       const q = query(
         collection(db, `product_${id}`)
         // collection(db, `product_1`)
@@ -58,26 +52,6 @@ function Comments({ id }) {
     }
   };
 
-  //   //SEND MESSAGES
-  //   const sendComment = async () => {
-  //     //what do we want to store? text + time + user
-  //     const commentObj = {
-  //       text: message,
-  //       date: new Date(), //creates the current date
-  //       user: user.email,
-  //     };
-  //     console.log("commentObj", commentObj); //ok
-  //     // Cloud Firestore creates collections and documents implicitly the first time you add data
-  //     // to the document. You do not need to explicitly create collections or documents.
-  //     try {
-  //       const docRef = await addDoc(collection(db,´product_${id}´), commentObj);
-  //       console.log("Document written with ID: ", docRef.id);
-  //       readComments();
-  //     } catch (e) {
-  //       console.error("Error adding document: ", e);
-  //     }
-  //   };
-
   //   //Read Messages
   //   const readComments = async () => {
   //     const q = query(collection(db, "comments"));
@@ -91,9 +65,6 @@ function Comments({ id }) {
 
   useEffect(() => {
     getComments();
-    // addComment();
-    //   readComments();
-    // addCommentFirestore();
   }, []);
 
   const addComment = async () => {
@@ -103,6 +74,9 @@ function Comments({ id }) {
         text: text,
       };
       const docRef = await addDoc(collection(db, "product_" + id), commentObj);
+      const updateComments = [...comments, commentObj];
+      setComments(updateComments);
+      setText("");
       console.log("docRef :>> ", docRef);
       console.log("message saved in database");
     } catch (error) {
@@ -112,29 +86,35 @@ function Comments({ id }) {
 
   return (
     <>
-      <h2 className="text-center"> Please leave a comment:</h2>
+      <div className="comment-section container">
+        <h2 className="text-center"> Please leave a comment:</h2>
 
-      {comments &&
-        comments.map((comment, i) => {
-          return (
-            <div className="comment-section text-center" key={i}>
-              <p> User: {comment.user}</p>
-              <p> Comment: {comment.text}</p>
-              {/* <p>{Comment.date?.seconds}</p> */}
-            </div>
-          );
-        })}
-      <input
-        type="text"
-        className="text-center"
-        value={text}
-        onChange={handleComment}
-      />
-      {user ? (
-        <button onClick={addComment}>Send Comment</button>
-      ) : (
-        <button>you need to login first</button>
-      )}
+        {comments &&
+          comments.map((comment, i) => {
+            return (
+              <div className="comment text-center" key={i}>
+                <p> User: {comment.user}</p>
+                <p> Comment: {comment.text}</p>
+                {/* <p>{Comment.date?.seconds}</p> */}
+              </div>
+            );
+          })}
+        <div className="input-comment">
+          <input
+            type="text"
+            className="text-center"
+            value={text}
+            onChange={handleComment}
+          />
+          {user ? (
+            <button onClick={addComment}>Submit</button>
+          ) : (
+            <Link to="/login">
+              <button> login first</button>
+            </Link>
+          )}
+        </div>
+      </div>
     </>
   );
 }

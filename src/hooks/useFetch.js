@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { db } from "../config/firebaseconfig";
 
 function useFetch(id) {
   const [products, setProducts] = useState([]);
@@ -48,6 +49,34 @@ function useFetch(id) {
     }
     fetchData();
   }, []);
+
+  // // push priduct data to firestore
+  // const productData = fetchData();
+  // db.collection("products")
+  //   .add({
+  //     name: productData.title,
+  //     description: productData.description,
+  //     id: productData.id,
+  //     image: productData.image,
+  //     price: productData.price,
+  //   })
+  //   .then((productRef) => {
+  //     console.log("Product added with ID: ", productRef.id);
+
+  //     // Add the comments sub-collection to the product document
+  //     db.collection("products")
+  //       .doc(productRef.id)
+  //       .collection("comments")
+  //       .add({
+  //         text: "Great product!",
+  //         timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
+  //         author: "John Doe",
+  //         productId: productRef.id,
+  //       })
+  //       .then((commentRef) => {
+  //         console.log("Comment added with ID: ", commentRef.id);
+  //       });
+  //   });
 
   return { product, products, error, isLoading, setProducts };
 }

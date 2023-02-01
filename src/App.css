@@ -67,13 +67,21 @@ small{
 }
 
 .comment-section{
-    background-color:#cecece ;
+    margin-top: 10px;
+    /* background-color:#cecece ; */
 }
-
-.container-footer{
+.comment{
+    border-style: solid;
+    border-color: grey;
+    margin: 2px;
+    background-color: blanchedalmond;
+}
+.input-comment{
+    padding: 15px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end !important;
+    align-items: center;
 }
 
 
