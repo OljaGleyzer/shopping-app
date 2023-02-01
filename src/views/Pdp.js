@@ -77,7 +77,7 @@ function Pdp() {
               <Button variant="primary">Buy Me</Button>
             </div>
           </div>
-          <Comments />
+          <Comments id={product.id} />
         </>
       ) : (
         <p>No product found</p>
