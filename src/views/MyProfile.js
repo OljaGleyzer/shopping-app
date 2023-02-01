@@ -8,13 +8,12 @@ import { getAuth, updateProfile } from "firebase/auth";
 import { useEffect } from "react";
 
 function MyProfile() {
+  console.log("myProfile run");
   const { user, logout, checkUserStatus, userName, setUserName } =
     useContext(AuthContext);
   const redirectTo = useNavigate();
-
-  useEffect(() => {
-    console.log("user :>> ", user);
-  }, [user]);
+  const [listener, setListener] = useState(true);
+  console.log("user :>> ", user);
 
   const handleNameChange = (e) => {
     setUserName(e.target.value);
@@ -30,6 +29,7 @@ function MyProfile() {
       .then(() => {
         console.log("Profile updated");
         checkUserStatus();
+        setListener(!listener);
       })
       .catch((error) => {
         console.log("error :>> ", error);

@@ -12,6 +12,7 @@ import { useEffect } from "react";
 
 export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {
+  console.log("authcontext run");
   //Put here the state and functions you want to share
   const [userName, setUserName] = useState("");
   const [loader, setLoader] = useState(true);
@@ -19,7 +20,7 @@ export const AuthContextProvider = (props) => {
   const [error, setError] = useState("");
   const redirectTo = useNavigate();
   const [user, setUser] = useState("");
-  console.log("user :>> ", user);
+  // console.log("user :>> ", user);
   // const [userName, setUserName] = useState("Stranger");
 
   const register = async (email, password) => {
