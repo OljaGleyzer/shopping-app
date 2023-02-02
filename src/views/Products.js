@@ -34,6 +34,8 @@ function ProductList() {
   return (
     <div className="container">
       <h1 className="text-center">
+        <br />
+        <br />
         MarxItUp : Happy Fake Shopping {user.displayName}
       </h1>
       <h2 className="text-center">Enjoy your shopping </h2>
@@ -48,6 +50,7 @@ function ProductList() {
           </option>
         ))}
       </select>
+      <br />
       <br />
       <div className="g-4 row row-cols-md-4 row-cols-1 ">
         {error && <p>{error.message}</p>}

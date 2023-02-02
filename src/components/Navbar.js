@@ -8,7 +8,7 @@ function Navbar() {
   const { password, logout, user } = useContext(AuthContext);
   return (
     <Nav
-      className="justify-content-end bg-dark"
+      className="justify-content-end bg-dark "
       variant="pills"
       defaultActiveKey="/home"
     >

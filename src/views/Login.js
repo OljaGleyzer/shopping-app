@@ -12,14 +12,13 @@ const Login = () => {
   const handleLogin = () => {
     login(email, password);
   };
+  const redirectLogin = useNavigate();
 
   const { login, error, user } = useContext(AuthContext);
 
   useEffect(() => {
     user && redirectLogin("/myprofile");
   }, [user]);
-
-  const redirectLogin = useNavigate();
 
   return (
     <div className="login">

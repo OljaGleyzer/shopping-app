@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/AuthContext";
 
 function ProtectedRoute({ children }) {
-  const redirectTo = useNavigate();
+  // const redirectTo = useNavigate();
 
   console.log("children", children);
 

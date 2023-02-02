@@ -1,3 +1,3 @@
-const isUser = user ? true : false;
+const isUser = user.email ? true : false;
 
 export { isUser };

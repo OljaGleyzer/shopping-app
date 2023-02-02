@@ -6,7 +6,9 @@ import missing from "./missing.png";
 
 function NoMatach() {
   return (
-    <div className="container" /* style={{ backgroundColor: "grey" }} */>
+    <div
+      className="container container-nomatch" /* style={{ backgroundColor: "grey" }} */
+    >
       <Container className="text-center">
         <h1> So Sorry, something went wrong ...</h1>
         <h2>
