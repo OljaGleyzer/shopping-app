@@ -12,8 +12,14 @@ body {
 }
 
 
-.cardlist-card {
 
+.cardlist-card {
+    margin-top: auto;
+display: flex;
+flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
     object-fit: cover;
 }
 
@@ -62,13 +68,39 @@ input{
         color: white;
 }
 
+.username-button{
+    padding: 10px;
+        width: 300px;
+        border: 1px solid #cecece;
+        background-color: black;
+        color: white;
+}
+.comment-button{
+padding: 10px;
+    width: 300px;
+    border: 1px solid #cecece;
+    background-color: black;
+    color: white;
+}
+
+:disabled{
+    background-color : grey;
+}
+
+.profile-username-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 small{
     color:red;
 }
 
 .comment-section{
     margin-top: 10px;
-    /* background-color:#cecece ; */
+    padding: 15px;
+    background-color:#cecece ;
 }
 .comment{
     border-style: solid;
@@ -82,6 +114,11 @@ small{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.container-footer{
+    display: flex;
+    justify-content: center;
 }
 
 

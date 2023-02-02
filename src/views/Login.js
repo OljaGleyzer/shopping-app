@@ -23,7 +23,11 @@ const Login = () => {
 
   return (
     <div className="login">
-      {user.email ? <h1>Hello {user.displayName}</h1> : <h1>Please Login:</h1>}
+      {user.email ? (
+        <h1>Hello {user.displayName}: You are logged in</h1>
+      ) : (
+        <h1>Please Login:</h1>
+      )}
       {/* <input
         value={userName}
         type="text"
@@ -48,6 +52,11 @@ const Login = () => {
       <button
         className="login-button"
         onClick={() => handleLogin(email, password)}
+        disabled={
+          password.length < 6 || !email.includes("@") || !email.includes(".")
+            ? true
+            : false
+        }
       >
         Login
       </button>

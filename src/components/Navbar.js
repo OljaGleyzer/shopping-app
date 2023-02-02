@@ -17,8 +17,17 @@ function Navbar() {
           Home
         </Nav.Link>
       </Nav.Item>
-      <Nav.Item>
+      {/* <Nav.Item>
         {!user.email && (
+          
+        )}
+      </Nav.Item> */}
+      <Nav.Item>
+        {user.email ? (
+          <Nav.Link as={Link} to="/myprofile">
+            My Profile
+          </Nav.Link>
+        ) : (
           <Nav.Link as={Link} to="/login">
             Login
           </Nav.Link>
@@ -26,18 +35,7 @@ function Navbar() {
       </Nav.Item>
       <Nav.Item>
         {user.email && (
-          <Nav.Link as={Link} to="/myprofile">
-            My Profile
-          </Nav.Link>
-        )}
-      </Nav.Item>
-      <Nav.Item>
-        {user.email && (
-          <Nav.Link
-            as={Link}
-            to="/login"
-            onClick={() => logout(password, logout)}
-          >
+          <Nav.Link as={Link} to="/" onClick={() => logout(password, logout)}>
             Logout
           </Nav.Link>
         )}

@@ -41,6 +41,11 @@ const Register = () => {
       <button
         className="register-button"
         onClick={() => handleRegister(email, password)}
+        disabled={
+          password.length < 6 || !email.includes("@") || !email.includes(".")
+            ? true
+            : false
+        }
       >
         Register
       </button>

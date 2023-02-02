@@ -65,11 +65,13 @@ function Pdp() {
         <>
           <div className="container">
             <h1 className="text-center"> {product.title}</h1>
-            <img
-              className="container d-flex justify-content-center"
-              src={product.image}
-              style={{ height: "30em", width: "auto" }}
-            ></img>
+            <div className="product-img-container">
+              <img
+                className="container d-flex justify-content-center"
+                src={product.image}
+                style={{ height: "30em", width: "auto" }}
+              ></img>
+            </div>
             <p></p>
             <p>Description: {product.description}</p>
             <h5>Price: {product.price} €</h5>

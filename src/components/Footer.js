@@ -8,7 +8,7 @@ function Footer() {
     <footer>
       <Nav bg="dark" variant="dark" className="container-footer">
         <div>
-          <Container className="justify-content-center no-padding ">
+          <Container className=" no-padding ">
             <Navbar.Brand href="#home">
               <img
                 alt=""
@@ -17,7 +17,7 @@ function Footer() {
                 height="30"
                 className="d-inline-block align-top"
               />{" "}
-              Happy Shopping: Copyright © Olja
+              Happy Fake Shopping © Olja
             </Navbar.Brand>
           </Container>
         </div>

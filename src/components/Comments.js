@@ -86,9 +86,8 @@ function Comments({ id }) {
 
   return (
     <>
+      <h2 className="text-center"> Please leave a comment:</h2>
       <div className="comment-section container">
-        <h2 className="text-center"> Please leave a comment:</h2>
-
         {comments &&
           comments.map((comment, i) => {
             return (
@@ -107,7 +106,9 @@ function Comments({ id }) {
             onChange={handleComment}
           />
           {user ? (
-            <button onClick={addComment}>Submit</button>
+            <button className="comment-button" onClick={addComment}>
+              Submit
+            </button>
           ) : (
             <Link to="/login">
               <button> login first</button>

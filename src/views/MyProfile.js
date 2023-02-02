@@ -50,15 +50,17 @@ function MyProfile() {
         <label>
           Change Username:
           <br />
-          <input
-            type="text"
-            id="username"
-            name="username"
-            onChange={handleNameChange}
-          />
-          <button className="username-button" onClick={handleUserName}>
-            Submit
-          </button>
+          <div className="profile-username-container">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              onChange={handleNameChange}
+            />
+            <button className="username-button" onClick={handleUserName}>
+              Submit
+            </button>
+          </div>
         </label>
         <br />
         {/* <label>
@@ -74,7 +76,7 @@ function MyProfile() {
         </label>
         <br /> */}
       </form>
-
+      <br />
       {/* <h2>Your Orders</h2> */}
       <h2>Wishlist </h2>
     </div>
