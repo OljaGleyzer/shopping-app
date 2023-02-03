@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import useFetch from "../hooks/useFetch";
 import Comments from "../components/Comments";
@@ -12,6 +12,7 @@ function Pdp() {
   console.log("useParams()", useParams());
 
   const { product, error, isLoading, setProducts } = useFetch(id);
+  console.log("error", error);
 
   // const fetchDetails = async () => {
   //   if (!isNaN(Number(id)) && id < 21 && id > 0) {
@@ -84,7 +85,8 @@ function Pdp() {
       ) : (
         <p>No product found</p>
       )}
-      {error && <p>CatchError: {error}</p>}
+      {error && <Navigate to="*" />}
+      {/* {error && <p>No product with this id</p>} */}
     </div>
   );
 }

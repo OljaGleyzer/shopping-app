@@ -17,8 +17,8 @@ import { AuthContext } from "../store/AuthContext";
 
 function Comments({ id }) {
   const productId = useParams();
-  console.log("productId", productId.id);
-  console.log("id :>> ", id);
+  // console.log("productId", productId.id);
+  // console.log("id :>> ", id);
   const { user, logout, checkUserStatus, userName, setUserName } =
     useContext(AuthContext);
   const [comments, setComments] = useState(null);
@@ -36,13 +36,13 @@ function Comments({ id }) {
         collection(db, `product_${id}`)
         // collection(db, `product_1`)
       );
-      console.log("q :>> ", q);
+      // console.log("q :>> ", q);
 
       const querySnapshot = await getDocs(q);
       const cmts = [];
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+        // console.log(doc.id, " => ", doc.data());
         cmts.push(doc.data());
       });
       setComments(cmts);

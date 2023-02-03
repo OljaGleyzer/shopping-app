@@ -10,18 +10,22 @@ function useFetch(id) {
   const url = "https://fakestoreapi.com/products";
 
   useEffect(() => {
-    async function fetchData() {
-      if (id === undefined) {
+    async function fetchData(id) {
+      if (!id) {
+        console.log("id with undefined", id);
         try {
+          console.log("try 17");
           const response = await fetch(url);
           const data = await response.json();
 
           setProducts(data);
         } catch (err) {
+          console.log("error :>> ", error);
           setError(err);
         }
       } else {
         if (!isNaN(Number(id)) && id < 21 && id > 0) {
+          console.log("id line 26 :>> ", id);
           try {
             setIsLoading(true);
             const response = await fetch(
@@ -34,6 +38,7 @@ function useFetch(id) {
               setProduct(data);
               setIsLoading(false);
             } else {
+              console.log("else 41");
               setError("No Product found");
               setIsLoading(false);
             }
@@ -42,41 +47,15 @@ function useFetch(id) {
             setIsLoading(false);
           }
         } else {
+          console.log("else 47");
           setError("This ID is invalid");
+          // alert("id is invalid");
           setIsLoading(false);
         }
       }
     }
-    fetchData();
-  }, []);
-
-  // // push priduct data to firestore
-  // const productData = fetchData();
-  // db.collection("products")
-  //   .add({
-  //     name: productData.title,
-  //     description: productData.description,
-  //     id: productData.id,
-  //     image: productData.image,
-  //     price: productData.price,
-  //   })
-  //   .then((productRef) => {
-  //     console.log("Product added with ID: ", productRef.id);
-
-  //     // Add the comments sub-collection to the product document
-  //     db.collection("products")
-  //       .doc(productRef.id)
-  //       .collection("comments")
-  //       .add({
-  //         text: "Great product!",
-  //         timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
-  //         author: "John Doe",
-  //         productId: productRef.id,
-  //       })
-  //       .then((commentRef) => {
-  //         console.log("Comment added with ID: ", commentRef.id);
-  //       });
-  //   });
+    fetchData(id);
+  }, [id]);
 
   return { product, products, error, isLoading, setProducts };
 }
