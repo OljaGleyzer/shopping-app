@@ -12,7 +12,7 @@ const Register = () => {
     register(email, password);
   };
   // const handleLoginButton = Link to
-  const { register, error, user } = useContext(AuthContext);
+  const { register, errorMessage, user } = useContext(AuthContext);
 
   return (
     <div className="login">
@@ -37,7 +37,12 @@ const Register = () => {
         placeholder="Password"
         onChange={handlePasswordChange}
       />
-      {error && <small>{error}</small>}
+      {errorMessage ? (
+        <p>
+          {" "}
+          <small>{errorMessage}</small>
+        </p>
+      ) : null}
       <button
         className="register-button"
         onClick={() => handleRegister(email, password)}

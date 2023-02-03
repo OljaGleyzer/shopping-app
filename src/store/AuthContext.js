@@ -18,6 +18,7 @@ export const AuthContextProvider = (props) => {
   const [loader, setLoader] = useState(true);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const redirectTo = useNavigate();
   const [user, setUser] = useState("");
   const redirectLogin = useNavigate();
@@ -36,14 +37,12 @@ export const AuthContextProvider = (props) => {
       const user = userCredential.user;
     } catch (error) {
       console.log("error.message :>> ", error.message);
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      // const errorCode = error.code;
+      setErrorMessage(error.message);
     }
   };
 
   const login = async (email, password) => {
-    // console.log("email, password", email, password);
-
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -55,8 +54,8 @@ export const AuthContextProvider = (props) => {
       // console.log("user :>> ", user);
     } catch (error) {
       console.log("error.message :>> ", error.message);
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      // const errorCode = error.code;
+      setErrorMessage(error.message);
     }
   };
 
@@ -103,6 +102,7 @@ export const AuthContextProvider = (props) => {
         password,
         setPassword,
         error,
+        errorMessage,
         logout,
         register,
         login,

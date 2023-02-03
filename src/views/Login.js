@@ -14,7 +14,7 @@ const Login = () => {
   };
   const redirectLogin = useNavigate();
 
-  const { login, error, user } = useContext(AuthContext);
+  const { login, user, errorMessage } = useContext(AuthContext);
 
   useEffect(() => {
     user && redirectLogin("/myprofile");
@@ -46,7 +46,12 @@ const Login = () => {
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      {error && <small>{error}</small>}
+      {errorMessage ? (
+        <p>
+          {" "}
+          <small>{errorMessage}</small>
+        </p>
+      ) : null}
 
       <button
         className="login-button"
