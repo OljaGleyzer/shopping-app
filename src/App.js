@@ -9,8 +9,8 @@ import Login from "./views/Login";
 import Register from "./views/Register";
 import { Route, Routes } from "react-router-dom";
 import { ProductsContextProvider } from "./store/ProductsContext";
-import { AuthContext, AuthContextProvider } from "./store/AuthContext";
-import { useEffect } from "react";
+import { AuthContextProvider } from "./store/AuthContext";
+
 import MyProfile from "./views/MyProfile";
 import ProtectedRoute from "./roots/ProtectedRoute";
 import { app } from "./config/firebaseconfig";

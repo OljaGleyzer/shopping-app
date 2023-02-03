@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useState } from "react";
+
 import useFetch from "../hooks/useFetch";
 
 export const ProductsContext = createContext();

@@ -1,13 +1,4 @@
-import {
-  doc,
-  setDoc,
-  collection,
-  getDocs,
-  query,
-  where,
-  collectionGroup,
-  addDoc,
-} from "firebase/firestore";
+import { collection, getDocs, query, addDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
@@ -32,16 +23,12 @@ function Comments({ id }) {
 
   const getComments = async () => {
     try {
-      const q = query(
-        collection(db, `product_${id}`)
-        // collection(db, `product_1`)
-      );
+      const q = query(collection(db, `product_${id}`));
       // console.log("q :>> ", q);
 
       const querySnapshot = await getDocs(q);
       const cmts = [];
       querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
         // console.log(doc.id, " => ", doc.data());
         cmts.push(doc.data());
       });
@@ -51,17 +38,6 @@ function Comments({ id }) {
       console.log("error", error);
     }
   };
-
-  //   //Read Messages
-  //   const readComments = async () => {
-  //     const q = query(collection(db, "comments"));
-  //     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-  //       const comments = [];
-  //       querySnapshot.forEach((doc) => {
-  //         comments.push(doc.data());
-  //       });
-  //       setTextMessages(comments);
-  //     });
 
   useEffect(() => {
     getComments();

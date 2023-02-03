@@ -1,6 +1,4 @@
-import React from "react";
 import { useEffect, useState } from "react";
-import { db } from "../config/firebaseconfig";
 
 function useFetch(id) {
   const [products, setProducts] = useState([]);
