@@ -20,6 +20,7 @@ export const AuthContextProvider = (props) => {
   const [error, setError] = useState("");
   const redirectTo = useNavigate();
   const [user, setUser] = useState("");
+  const redirectLogin = useNavigate();
   // console.log("user :>> ", user);
   // const [userName, setUserName] = useState("Stranger");
 
@@ -42,6 +43,7 @@ export const AuthContextProvider = (props) => {
 
   const login = async (email, password) => {
     // console.log("email, password", email, password);
+
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -79,13 +81,11 @@ export const AuthContextProvider = (props) => {
 
   const logout = () => {
     const auth = getAuth();
+
     signOut(auth)
       .then(() => {
         console.log("sign out successfull");
-        setUser({
-          userName: null,
-          password: null,
-        });
+        setUser("");
         // Sign-out successful.
       })
       .catch((error) => {
